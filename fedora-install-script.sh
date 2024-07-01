@@ -1,35 +1,76 @@
 #!/bin/bash
-# preparation
+
+
+#  --- folder setup --- 
 mkdir -p ~/.tmp
 mkdir -p ~/development
 
 
-# change hostname to human tongue
+# --- hostname to human tongue --- 
 hostnamectl hostname --static fedora-workstation
 hostnamectl hostname --pretty fedora-workstation
 
+
 # --- Command Line Utilities ---
-sudo dnf install fish helix kitty tmux alacritty neofetch tree htop
+sudo dnf install --assumeyes fish helix kitty tmux alacritty fastfetch tree htop
+
+
+
+# --- Neovim & LazyVim ---
+sudo dnf install --assumeyes neovim
+
+# required
+mv ~/.config/nvim{,.bak}
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+
+# Remove the `.git` folder, so you can add it to your own repo later
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+# rm -rf ~/.config/nvim/.git
+rm -rf ~/.config/nvim/.git
+
+
+
+# --- Fonts ---
+# Nerdfonts
+sudo dnf copr enable che/nerd-fonts && sudo dnf install nerd-fonts
 
 # Development Tools and Packages
-sudo dnf groupinstall "Development Tools" "Development Libraries"
-sudo dnf install zig rustup go python3
-
-sudo dnf install raylib
-
-echo "--- Development Tools and Packages installed ---"
-# Language Servers (later)
+sudo dnf groupinstall --assumeyes "Development Tools" "Development Libraries"
+sudo dnf install --assumeyes zig rustup go python3
+sudo dnf install --assumeyes raylib
 
 
-# gnome utilities ( add if statement or check for gnome desktop)
-sudo dnf install gnome-tweaks gnome-extensions-app gnome-keyring
+# --- Language Servers (later) --- 
 
-# GUI Applications
-sudo dnf install thunderbird
+# bash
+sudo dnf install --assumeyes nodejs-bash-language-server
+# go
+sudo dnf install golang-x-tools-gopls
+# zigtools
+sudo dnf copr enable --assumeyes sentry/zls 
+sudo dnf install --assumeyes zls lldb-devel
+# llvm
+sudo dnf install --assumeeyes llvm
+
+# --- gnome utilities ( add if statement or check for gnome desktop) --- 
+sudo dnf install --assumeyes gnome-tweaks gnome-extensions-app gnome-keyring
+
+
+# --- GUI Applications --- 
+sudo dnf install --assumeyes thunderbird
+
+
+#  --- steam servers --- 
+
 
 # --- flatpaks ---
 flatpak install flathub md.obsidian.Obsidian
 flatpak install flathub io.github.shiftey.Desktop
+flatpak install flathub com.axosoft.GitKraken
 flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub net.davidotek.pupgui2 # proton-up
 flatpak install flathub com.spotify.Client
@@ -42,16 +83,17 @@ flatpak install flathub org.gimp.GIMP
 flatpak install flathub com.jetbrains.CLion
 flatpak install flathub com.jetbrains.GoLand
 flatpak install flathub com.mattjakeman.ExtensionManager
-
+flatpak install flathub me.timschneeberger.jdsp4linux
+flatpak install flathub com.usebottles.bottles # bottles for gamma emulation
 echo "--- Flatpaks installed ---"
 
 
-# automating github if possible with new key access?
+#  --- automating github if possible with new key access?  --- 
 ### 
 
-# Post Install Setup
-chsh -s /bin/fish $USER
 
+#  --- Post Install Setup  --- 
+chsh -s /bin/fish "$USER"
 
 
 echo "--- Setup done! ---"
