@@ -46,7 +46,7 @@ sudo dnf install --assumeyes zig rustup go python3
 
 # raylib
 sudo dnf install --assumeyes raylib libX11devel
-sudo dnf install clang-devel alsa-lib-devel mesa-libGL-devel libX11-devel libXrandr-devel libXi-devel libXcursor-devel libXinerama-devel libatomic cmake
+sudo dnf install --assumeyes clang-devel alsa-lib-devel mesa-libGL-devel libX11-devel libXrandr-devel libXi-devel libXcursor-devel libXinerama-devel libatomic cmake
 
 
 
