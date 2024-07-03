@@ -36,20 +36,26 @@ rm -rf ~/.config/nvim/.git
 
 # --- Fonts ---
 # Nerdfonts
-sudo dnf copr enable che/nerd-fonts && sudo dnf install nerd-fonts
+sudo dnf copr enable --assumeyes che/nerd-fonts && sudo dnf install nerd-fonts
 
-# Development Tools and Packages
-sudo dnf groupinstall --assumeyes "Development Tools" "Development Libraries"
+# --- Development Tools and Packages ---
+
+sudo dnf groupinstall --assumeyes "Development Tools" "Development Libraries" # c, c++, zig, rust
 sudo dnf install --assumeyes zig rustup go python3
-sudo dnf install --assumeyes raylib
 
 
-# --- Language Servers (later) --- 
+# raylib
+sudo dnf install --assumeyes raylib libX11devel
+sudo dnf install clang-devel alsa-lib-devel mesa-libGL-devel libX11-devel libXrandr-devel libXi-devel libXcursor-devel libXinerama-devel libatomic cmake
+
+
+
+# --- Language Servers --- 
 
 # bash
 sudo dnf install --assumeyes nodejs-bash-language-server
 # go
-sudo dnf install golang-x-tools-gopls
+sudo dnf install -assumeyes golang-x-tools-gopls
 # zigtools
 sudo dnf copr enable --assumeyes sentry/zls 
 sudo dnf install --assumeyes zls lldb-devel
@@ -65,7 +71,7 @@ sudo dnf install --assumeyes thunderbird
 
 
 #  --- steam servers --- 
-
+# !Project Zomboid for fedora 40 in work
 
 # --- flatpaks ---
 flatpak install flathub md.obsidian.Obsidian
@@ -85,6 +91,7 @@ flatpak install flathub com.jetbrains.GoLand
 flatpak install flathub com.mattjakeman.ExtensionManager
 flatpak install flathub me.timschneeberger.jdsp4linux
 flatpak install flathub com.usebottles.bottles # bottles for gamma emulation
+flatpak install flathub me.proton.Mail
 echo "--- Flatpaks installed ---"
 
 
