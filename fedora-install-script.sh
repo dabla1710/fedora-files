@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo dnf update --assumeyes && sudo dnf upgrade --assumeyes
 
 #  --- folder setup --- 
 mkdir -p ~/.tmp
