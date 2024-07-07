@@ -47,9 +47,7 @@ sudo dnf install --assumeyes zig rustup go python3
 
 # raylib
 sudo dnf install --assumeyes raylib libX11devel
-sudo dnf install --assumeyes clang-devel alsa-lib-devel mesa-libGL-devel libX11-devel libXrandr-devel libXi-devel libXcursor-devel libXinerama-devel libatomic cmake
-
-
+sudo dnf install --assumeyes clang-devel alsa-lib-devel mesa-libGL-devel libX11-devel libXrandr-devel libXi-devel libXcursor-devel libXinerama-devel wayland-devel libxkbcommon-devel libatomic cmake 
 
 # --- Language Servers --- 
 
@@ -75,24 +73,25 @@ sudo dnf install --assumeyes thunderbird
 # !Project Zomboid for fedora 40 in work
 
 # --- flatpaks ---
-flatpak install flathub md.obsidian.Obsidian
-flatpak install flathub io.github.shiftey.Desktop
-flatpak install flathub com.axosoft.GitKraken
-flatpak install flathub com.valvesoftware.Steam
-flatpak install flathub net.davidotek.pupgui2 # proton-up
-flatpak install flathub com.spotify.Client
-flatpak install flathub com.obsproject.Studio
-flatpak install flathub com.discordapp.Discord
-flatpak install flathub org.onlyoffice.desktopeditors
-flatpak install flathub com.brave.Browser
-flatpak install flathub org.blender.Blender
-flatpak install flathub org.gimp.GIMP
-flatpak install flathub com.jetbrains.CLion
-flatpak install flathub com.jetbrains.GoLand
-flatpak install flathub com.mattjakeman.ExtensionManager
-flatpak install flathub me.timschneeberger.jdsp4linux
-flatpak install flathub com.usebottles.bottles # bottles for gamma emulation
-flatpak install flathub me.proton.Mail
+flatpak install -y flathub md.obsidian.Obsidian
+flatpak install -y flathub io.github.shiftey.Desktop
+flatpak install -y flathub com.axosoft.GitKraken
+flatpak install -y flathub com.valvesoftware.Steam
+flatpak install -y flathub net.davidotek.pupgui2 # proton-up
+flatpak install -y flathub com.spotify.Client
+flatpak install -y flathub com.obsproject.Studio
+flatpak install -y flathub com.discordapp.Discord
+flatpak install -y flathub org.onlyoffice.desktopeditors
+flatpak install -y flathub com.brave.Browser
+flatpak install -y flathub org.blender.Blender
+flatpak install -y flathub org.gimp.GIMP
+flatpak install -y flathub com.jetbrains.CLion
+flatpak install -y flathub com.jetbrains.GoLand
+flatpak install -y flathub com.mattjakeman.ExtensionManager
+flatpak install -y flathub me.timschneeberger.jdsp4linux
+flatpak install -y flathub com.usebottles.bottles # bottles for gamma emulation
+flatpak install -y flathub me.proton.Mail
+flatpak install -y flathub com.github.Matoking.protontricks
 echo "--- Flatpaks installed ---"
 
 
